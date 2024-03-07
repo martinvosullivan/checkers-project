@@ -31,3 +31,7 @@
 .B {
   background-color: #000;
 }
+
+.king {
+  border: 4px solid gold;
+}
