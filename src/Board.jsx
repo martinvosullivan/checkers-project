@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Piece from "./Piece";
+import Tile from "./Tile";
 import "./Checkerboard.css";
 
 const Checkerboard = () => {
@@ -184,26 +186,24 @@ const Checkerboard = () => {
     return board.map((row, rowIndex) => (
       <div key={rowIndex} className="board-row">
         {row.map((cell, colIndex) => (
-          <div
+          <Tile
             key={colIndex}
-            className={getCellColor(rowIndex, colIndex)}
+            color={(rowIndex + colIndex) % 2 === 0 ? "white" : "black"}
             onClick={() => handleCellClick(rowIndex, colIndex, cell)}
           >
             {cell.player !== " " && (
-              <div
-                className={`piece ${cell.player} ${cell.isKing ? "king" : ""}`}
-              ></div>
+              <Piece player={cell.player} isKing={cell.isKing} />
             )}
-          </div>
+          </Tile>
         ))}
       </div>
     ));
   };
 
-  // Determine cell color based on position
-  const getCellColor = (row, col) => {
-    return (row + col) % 2 === 0 ? "white-cell" : "black-cell";
-  };
+  // // Determine cell color based on position
+  // const getCellColor = (row, col) => {
+  //   return (row + col) % 2 === 0 ? "white-cell" : "black-cell";
+  // };
 
   return <div className="checkerboard">{renderBoard()}</div>;
 };
