@@ -1,7 +1,9 @@
 import "./styles.css";
+import "./Ad.css";
 import { useState } from "react";
 import Checkerboard from "./Board";
 import CheckersGame from "./Game";
+import AdAPI from "./AdAPI";
 import * as React from "react";
 
 export default function App() {
@@ -19,6 +21,7 @@ export default function App() {
         ) : (
           <Checkerboard />
         )}
+        <AdAPI />
       </div>
     </div>
   );
